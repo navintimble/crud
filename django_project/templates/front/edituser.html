@@ -1,0 +1,57 @@
+{% extends 'front/base.html' %}
+{% block body %}
+{% load static %}
+<main>
+   <div class="container">
+      <h4 class="mt-4">Add New</h4>
+      <ol class="breadcrumb mb-4">
+         <li class="breadcrumb-item"><a href="{% url 'home' %}">Dashboard</a></li>
+         <li class="breadcrumb-item active">Add New</li>
+      </ol>
+      <div class="row justify-content-center">
+         <div class="col-lg-12">
+            <div class="card shadow-lg border-0 rounded-lg mb-5">
+               <div class="card-body">
+                   <form method="post" action="/updatedata/{{gdata.user_id}}" >
+                   {% csrf_token %}
+                     <div class="form-row">
+                        <div class="col-md-6">
+                           <div class="form-group">
+                              <label class="small mb-1" for="inputFirstName">First Name</label>
+                              <input class="form-control " id="inputFirstName" name="name" value="{{gdata.name}}" type="text" placeholder="Enter first name" />
+                           </div>
+                        </div>
+                        <div class="col-md-6">
+                           <div class="form-group">
+                              <label class="small mb-1" for="inputLastName">Image</label>
+                              <input class="form-control " id="inputLastName" name="image"  value="{{gdata.image}}"  type="file"  />
+                           </div>
+                        </div>
+                     </div>
+                     <div class="form-group">
+                        <label class="small mb-1"  for="inputEmailAddress">Date</label>
+                        <input class="form-control " name="date" id="inputEmailAddress" type="date" aria-describedby="emailHelp" value="{{gdata.date}}"  />
+                     </div>
+                     <div class="form-row">
+                        <div class="col-md-6">
+                           <div class="form-group">
+                              <label class="small mb-1" for="inputPassword">Time</label>
+                              <input class="form-control " name="time"  id="inputPassword" type="time" value="{{gdata.time}}"  />
+                           </div>
+                        </div>
+                        <div class="col-md-6">
+                           <div class="form-group">
+                              <label class="small mb-1" for="inputConfirmPassword">Position</label>
+                              <input class="form-control " name="position"  id="inputConfirmPassword" type="text" placeholder="Work Position" value="{{gdata.position}}"  />
+                           </div>
+                        </div>
+                     </div>
+                     <div class="form-group mt-4 mb-0"><button class="btn btn-primary "  type="submit">Update</button></div>
+                  </form>
+               </div>
+            </div>
+         </div>
+      </div>
+   </div>
+</main>
+{% endblock %}
